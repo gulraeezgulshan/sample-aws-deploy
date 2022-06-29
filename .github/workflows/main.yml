@@ -2,6 +2,7 @@ name: Deploy Node app on AWS Elastic Beanstalk
 
 env:
   APP_NAME: sample-aws-deploy
+  EB_ENV_NAME: Sampleawsdeploy-prod
   S3_BUCKET: sample-aws-deploy-bucket-gulraiz-98754
   KP_NAME: assignment02-kp
   AWS_REGION: us-east-1
@@ -68,5 +69,5 @@ jobs:
 
           echo "Deploy init"
           eb init -i ${{env.APP_NAME}} -k ${{env.KP_NAME}} -p ${{env.AWS_PLATFORM}} --region ${{env.AWS_REGION}}
-          eb deploy ${{env.APP_NAME}} --version ${AWS_VERSION_LABEL}
+          eb deploy ${{env.EB_ENV_NAME}} --version ${AWS_VERSION_LABEL}
           echo "Deploy finished"
