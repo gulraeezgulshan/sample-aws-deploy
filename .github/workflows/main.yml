@@ -3,6 +3,7 @@ name: Deploy Node app on AWS Elastic Beanstalk
 env:
   APP_NAME: sample-aws-deploy
   S3_BUCKET: sample-aws-deploy-bucket-gulraiz-98754
+  KP_NAME: assignment02-kp
   AWS_REGION: us-east-1
   AWS_PLATFORM: Docker
   PIPELINE_ID: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
@@ -66,6 +67,6 @@ jobs:
           eb --version
 
           echo "Deploy init"
-          eb init -i ${{env.APP_NAME}} -k assignment02-kp	-p ${{env.AWS_PLATFORM}} -k ${{secrets.AWS_ID}} --region ${{env.AWS_REGION}}
+          eb init -i ${{env.APP_NAME}} -k ${{env.KP_NAME}} -p ${{env.AWS_PLATFORM}} --region ${{env.AWS_REGION}}
           eb deploy ${{env.APP_NAME}} --version ${AWS_VERSION_LABEL}
           echo "Deploy finished"
